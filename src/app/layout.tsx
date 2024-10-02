@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     language: "pt-BR",
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "https://netmastertvonline.com/wp-content/uploads/2022/10/favicon.png",
+    shortcut: "https://netmastertvonline.com/wp-content/uploads/2022/10/favicon.png",
     apple: "/apple-touch-icon.png",
   },
 };
