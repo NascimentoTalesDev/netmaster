@@ -14,11 +14,12 @@ import {
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { getTest } from "./actions";
+import { checkUser, getTest, saveUser } from "../app/actions";
 import { Loader } from "lucide-react";
-import { useMyTestProvider } from "./hooks/MyTestProvider";
-import { MyTest } from "./types/mytest";
+import { useMyTestProvider } from "../app/hooks/MyTestProvider";
+import { MyTest } from "../app/types/mytest";
 import { Input } from "@/components/ui/input";
+import { User } from "@prisma/client";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -58,13 +59,20 @@ const GenerateTestForm = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsGettingTest(true)
     try {
-      const res: MyTest = await getTest()
       const firstName = values.name.split(' ')[0];
-      myTest.onOpen(res, firstName)
-      toast.success("Teste gerado com sucesso")
+      const user = await checkUser(values)
+
+      if (!user) {
+        const res: MyTest = await getTest()
+        myTest.onOpen(res, firstName)
+        await saveUser(values as User);
+        toast.success("Teste gerado com sucesso");
+      } else {
+        toast.error("Um teste já foi gerado para este usuário.");
+      }
     } catch (error) {
+      toast.error("Ocorreu um erro inesperado, tente mais tarde")
       console.log(error);
-      toast.error("Ocorreu um erro inesperado")
     }
     setIsGettingTest(false)
   };

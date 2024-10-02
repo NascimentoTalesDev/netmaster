@@ -1,4 +1,4 @@
-import GenerateTestForm from "./GenerateTestForm";
+import GenerateTestForm from "../components/GenerateTestForm";
 
 export default function Home() {
   return (
