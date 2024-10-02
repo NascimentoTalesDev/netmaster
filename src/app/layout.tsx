@@ -14,10 +14,43 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
 export const metadata: Metadata = {
   title: "Gerar teste IPTV",
   description: "Experimente nosso serviço IPTV com um teste gratuito e descubra uma nova forma de assistir TV.",
+  viewport: "width=device-width, initial-scale=1",
+  keywords: "IPTV, teste gratuito, streaming, TV online",
+  authors: [{ name: "NetMaster" }],
+  robots: "index, follow",
+  openGraph: {
+    title: "Gerar teste IPTV",
+    description: "Experimente nosso serviço IPTV com um teste gratuito e descubra uma nova forma de assistir TV.",
+    type: "website",
+    url: "https://seusite.com",
+    images: [
+      {
+        url: "https://netmastertvonline.com/wp-content/uploads/2022/10/favicon.png",
+        width: 800,
+        height: 600,
+        alt: "Logo IPTV",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gerar teste IPTV",
+    description: "Experimente nosso serviço IPTV com um teste gratuito e descubra uma nova forma de assistir TV.",
+    images: [
+      "https://netmastertvonline.com/wp-content/uploads/2022/10/favicon.png",
+    ],
+  },
+  other: {
+    language: "pt-BR",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +60,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="https://netmastertvonline.com/wp-content/uploads/2022/10/favicon.png" sizes="any" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
