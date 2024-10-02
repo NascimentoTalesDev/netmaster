@@ -4,10 +4,11 @@ import { create } from "zustand"
 import { MyTest } from "../types/mytest";
 
 type MyTestType = {
-    myTest?: MyTest;
-    isOpen: boolean;
+    myTest?: MyTest | null;
     name?: string;
-    onOpen: (myTest: MyTest, name: string) => void;
+    success: boolean;
+    isOpen: boolean;
+    onOpen: (myTest: MyTest | null, name: string, success: boolean) => void;
     onClose: () => void;
 }
 
@@ -15,6 +16,7 @@ export const useMyTestProvider = create<MyTestType>((set) => ({
     myTest: undefined,
     name: undefined,
     isOpen: false,
-    onOpen: (myTest: MyTest, name: string) => set({ isOpen: true, myTest, name }),
-    onClose: () => set({ isOpen: false, myTest: undefined, name: undefined })
+    success: false,
+    onOpen: (myTest: MyTest | null, name: string, success: boolean) => set({ isOpen: true, myTest, name, success }),
+    onClose: () => set({ isOpen: false, myTest: undefined, name: undefined, success: false })
 }))

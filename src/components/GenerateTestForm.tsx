@@ -58,16 +58,20 @@ const GenerateTestForm = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsGettingTest(true)
+    let success = true
     try {
       const firstName = values.name.split(' ')[0];
       const user = await checkUser(values)
 
       if (!user) {
         const res: MyTest = await getTest()
-        myTest.onOpen(res, firstName)
+        myTest.onOpen(res, firstName, success)
         await saveUser(values as User);
         toast.success("Teste gerado com sucesso");
       } else {
+        success = false
+        const resp = null
+        myTest.onOpen(resp, firstName, success)
         toast.error("Um teste já foi gerado para este usuário.");
       }
     } catch (error) {
