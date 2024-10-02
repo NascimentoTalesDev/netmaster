@@ -14,11 +14,11 @@ import {
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { getTest } from "./actions";
 import { Loader } from "lucide-react";
 import { useMyTestProvider } from "./hooks/MyTestProvider";
 import { MyTest } from "./types/mytest";
+import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -51,6 +51,7 @@ const GenerateTestForm = () => {
       myTest.onOpen(res, firstName)
       toast.success("Teste gerado com sucesso")
     } catch (error) {
+      console.log(error);
       toast.error("Ocorreu um erro inesperado")
     }
     setIsGettingTest(false)
