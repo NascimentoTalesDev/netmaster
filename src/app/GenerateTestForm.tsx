@@ -13,13 +13,12 @@ import {
 } from "@/components/ui/form";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getTest } from "./actions";
 import { Loader } from "lucide-react";
-import { MyTest } from "./MyTest";
 import { useMyTestProvider } from "./hooks/MyTestProvider";
+import { MyTest } from "./types/mytest";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -34,7 +33,6 @@ const formSchema = z.object({
 });
 
 const GenerateTestForm = () => {
-  const [data, setData] = useState()
   const [isGettingTest, setIsGettingTest] = useState(false)
   const myTest = useMyTestProvider();
 
@@ -46,16 +44,16 @@ const GenerateTestForm = () => {
   const { isSubmitting, isValid } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setIsGettingTest(true) 
+    setIsGettingTest(true)
     try {
-      const res = await getTest()
-      // setData(res)
-      myTest.onOpen()
+      const res: MyTest = await getTest()
+      const firstName = values.name.split(' ')[0];
+      myTest.onOpen(res, firstName)
       toast.success("Teste gerado com sucesso")
     } catch (error) {
       toast.error("Ocorreu um erro inesperado")
     }
-    setIsGettingTest(false) 
+    setIsGettingTest(false)
   };
 
   return (
@@ -65,7 +63,6 @@ const GenerateTestForm = () => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col"
         >
-
           <FormField
             control={form.control}
             name="name"
@@ -127,7 +124,7 @@ const GenerateTestForm = () => {
               variant={"default"}
               disabled={!isValid || isSubmitting}
             >
-              {isGettingTest ? 'Gerando' : 'Gerar'} meu teste 
+              {isGettingTest ? 'Gerando' : 'Gerar'} meu teste
               <span className="animate-spin">
                 {isGettingTest && <Loader />}
               </span>

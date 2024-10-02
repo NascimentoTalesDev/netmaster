@@ -1,19 +1,20 @@
 "use client"
 
 import { create } from "zustand"
+import { MyTest } from "../types/mytest";
 
-type MyTest = {
-    quiz?: MyTest;
-    gameController?: any;
+type MyTestType = {
+    myTest?: MyTest;
     isOpen: boolean;
-    onOpen: () => void;
+    name?: string;
+    onOpen: (myTest: MyTest, name: string) => void;
     onClose: () => void;
 }
 
-export const useMyTestProvider = create<MyTest>((set) => ({
-    quiz: undefined,
-    gameController: undefined,
+export const useMyTestProvider = create<MyTestType>((set) => ({
+    myTest: undefined,
+    name: undefined,
     isOpen: false,
-    onOpen: () => set({ isOpen: true }),
-    onClose: () => set({ isOpen: false, quiz: undefined})
+    onOpen: (myTest: MyTest, name: string) => set({ isOpen: true, myTest, name }),
+    onClose: () => set({ isOpen: false, myTest: undefined, name: undefined })
 }))

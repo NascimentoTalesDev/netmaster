@@ -75,4 +75,16 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  .bg-mobile{
+    background-image: url("/images/bg-mobile.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .bg-desk{
+    background-image: url("/images/bg-desk.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
