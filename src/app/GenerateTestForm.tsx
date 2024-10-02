@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { getTest } from "./actions";
 import { Loader } from "lucide-react";
 import { MyTest } from "./MyTest";
+import { useMyTestProvider } from "./hooks/MyTestProvider";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -35,6 +36,7 @@ const formSchema = z.object({
 const GenerateTestForm = () => {
   const [data, setData] = useState()
   const [isGettingTest, setIsGettingTest] = useState(false)
+  const myTest = useMyTestProvider();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,7 +49,8 @@ const GenerateTestForm = () => {
     setIsGettingTest(true) 
     try {
       const res = await getTest()
-      setData(res)
+      // setData(res)
+      myTest.onOpen()
       toast.success("Teste gerado com sucesso")
     } catch (error) {
       toast.error("Ocorreu um erro inesperado")
@@ -57,8 +60,6 @@ const GenerateTestForm = () => {
 
   return (
     <div className="w-full">
-      {data }
-      <MyTest />
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -131,7 +132,6 @@ const GenerateTestForm = () => {
                 {isGettingTest && <Loader />}
               </span>
             </Button>
-            {data}
           </div>
         </form>
       </Form>
