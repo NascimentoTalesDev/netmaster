@@ -14,7 +14,7 @@ import {
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { checkUser, getTest, saveUser } from "../app/actions";
+import { checkUser, getTest, saveUser, sendEmail } from "../app/actions";
 import { Loader } from "lucide-react";
 import { useMyTestProvider } from "../app/hooks/MyTestProvider";
 import { MyTest } from "../app/types/mytest";
@@ -60,16 +60,20 @@ const GenerateTestForm = () => {
     setIsGettingTest(true)
     try {
       const firstName = values.name.split(' ')[0];
-      const user = await checkUser(values)
+      // const user = await checkUser(values)
 
-      if (!user) {
-        const res: MyTest = await getTest()
-        myTest.onOpen(res, firstName)
-        await saveUser(values as User);
-        toast.success("Teste gerado com sucesso");
-      } else {
-        toast.error("Um teste já foi gerado para este usuário.");
-      }
+      await sendEmail()
+      toast.success("Teste gerado com sucesso");
+      
+      // if (!user) {
+        // const res: MyTest = await getTest()
+        
+        // myTest.onOpen(res, firstName)
+        // await saveUser(values as User);
+        // toast.success("Teste gerado com sucesso");
+      // } else {
+      //   toast.error("Um teste já foi gerado para este usuário.");
+      // }
     } catch (error) {
       toast.error("Ocorreu um erro inesperado, tente mais tarde")
       console.log(error);
