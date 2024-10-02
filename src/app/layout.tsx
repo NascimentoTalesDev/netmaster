@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Gerar teste IPTV",
     description: "Experimente nosso serviço IPTV com um teste gratuito e descubra uma nova forma de assistir TV.",
     type: "website",
-    url: "https://seusite.com",
+    url: "https://netmastertvonline.com",
     images: [
       {
         url: "https://netmastertvonline.com/wp-content/uploads/2022/10/favicon.png",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "https://netmastertvonline.com/wp-content/uploads/2022/10/favicon.png",
     shortcut: "https://netmastertvonline.com/wp-content/uploads/2022/10/favicon.png",
-    apple: "/apple-touch-icon.png",
+    apple: "https://netmastertvonline.com/wp-content/uploads/2022/10/favicon.png",
   },
 };
 

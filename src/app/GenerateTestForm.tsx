@@ -24,12 +24,24 @@ const formSchema = z.object({
   name: z.string().min(1, {
     message: "Por favor, digite seu nome.",
   }),
-  email: z.string().email().min(1, {
+  email: z.string().email({
+    message: "Por favor, digite um email válido.",
+  }).min(1, {
     message: "Por favor, digite seu email.",
   }),
-  phone: z.string().min(11, {
-    message: "Por favor, digite seu telefone.",
-  }),
+  phone: z.string()
+    .refine(
+      (value) => /^\d+$/.test(value),
+      {
+        message: "Por favor, digite apenas números para o telefone.",
+      }
+    )
+    .refine(
+      (value) => value.length >= 11,
+      {
+        message: "O telefone deve ter pelo menos 11 dígitos.",
+      }
+    ),
 });
 
 const GenerateTestForm = () => {
