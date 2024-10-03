@@ -14,7 +14,7 @@ import {
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { checkUser, getTest, saveUser } from "../app/actions";
+import { checkUser, getTest, saveUser, sendEmail } from "../app/actions";
 import { Loader } from "lucide-react";
 import { useMyTestProvider } from "../app/hooks/MyTestProvider";
 import { MyTest } from "../app/types/mytest";
@@ -51,33 +51,42 @@ const GenerateTestForm = () => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: {
+      email: '',
+      name: '',
+      phone: '',
+    },
   });
 
   const { isSubmitting, isValid } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsGettingTest(true)
-    let success = true
+    // let success = true
     try {
-      const firstName = values.name.split(' ')[0];
-      const user = await checkUser(values)
+      const email = await sendEmail(values as User)
+        console.log("EMAIL", email);
+          toast.success("Teste gerado com sucesso");
+        
+      // const firstName = values.name.split(' ')[0];
+      // const user = await checkUser(values)
 
-      if (!user) {
-        const res: MyTest = await getTest()
-        myTest.onOpen(res, firstName, success)
-        await saveUser(values as User);
-        toast.success("Teste gerado com sucesso");
-      } else {
-        success = false
-        const resp = null
-        myTest.onOpen(resp, firstName, success)
-        toast.error("Um teste já foi gerado para este usuário.");
-      }
+      // if (!user) {
+      //   const res: MyTest = await getTest()
+      //   myTest.onOpen(res, firstName, success)
+      //   await saveUser(values as User);
+      //   toast.success("Teste gerado com sucesso");
+      // } else {
+      //   success = false
+      //   const resp = null
+      //   myTest.onOpen(resp, firstName, success)
+      //   toast.error("Um teste já foi gerado para este usuário.");
+      // }
     } catch (error) {
       toast.error("Ocorreu um erro inesperado, tente mais tarde")
       console.log(error);
     }
+    form.reset()
     setIsGettingTest(false)
   };
 
