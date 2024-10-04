@@ -14,7 +14,7 @@ import {
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { checkUser, getTest, saveUser, sendEmail } from "../app/actions";
+import { checkUser, getTestTNM2, saveUser, sendEmail } from "../app/tests/client/actions";
 import { Loader } from "lucide-react";
 import { useMyTestProvider } from "../app/hooks/MyTestProvider";
 import { MyTest } from "../app/types/mytest";
@@ -62,26 +62,26 @@ const GenerateTestForm = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsGettingTest(true)
-    // let success = true
+    const workers = false
+    let success = true
+    
     try {
-      const email = await sendEmail(values as User)
-        console.log("EMAIL", email);
-          toast.success("Teste gerado com sucesso");
-        
-      // const firstName = values.name.split(' ')[0];
-      // const user = await checkUser(values)
+      // const email = await sendEmail(values as User) 
 
-      // if (!user) {
-      //   const res: MyTest = await getTest()
-      //   myTest.onOpen(res, firstName, success)
-      //   await saveUser(values as User);
-      //   toast.success("Teste gerado com sucesso");
-      // } else {
-      //   success = false
-      //   const resp = null
-      //   myTest.onOpen(resp, firstName, success)
-      //   toast.error("Um teste já foi gerado para este usuário.");
-      // }
+      const firstName = values.name.split(' ')[0];
+      // const user = await checkUser(values)
+      let user = true
+      if (!user) {
+        const res: MyTest = await getTestTNM2()
+        myTest.onOpen(res, firstName, success, workers)
+        await saveUser(values as User);
+        toast.success("Teste gerado com sucesso");
+      } else {
+        success = false
+        const resp = null
+        myTest.onOpen(resp, firstName, success, workers)
+        toast.error("Um teste já foi gerado para este usuário.");
+      }
     } catch (error) {
       toast.error("Ocorreu um erro inesperado, tente mais tarde")
       console.log(error);

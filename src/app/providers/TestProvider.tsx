@@ -12,6 +12,8 @@ const MyTestModalProvider = () => {
   const myTest = myTestModal?.myTest
   const myName = myTestModal?.name
   const success = myTestModal?.success
+  const workers = myTestModal?.workers
+  console.log(workers, success);
 
   const copyContent = (content: string | undefined) => {
     if (content) {
@@ -27,7 +29,7 @@ const MyTestModalProvider = () => {
 
   return (
     <div className="absolute  flex px-4 justify-center items-center h-full w-full z-[1] bg-background_rgba backdrop-blur-sm">
-      <div className="relative bg-white p-6 rounded-lg shadow-lg">
+      <div className="relative bg-white p-6 min-w-[400px] rounded-lg shadow-lg">
         <Button
           onClick={() => {
             myTestModal.onClose()
@@ -38,13 +40,10 @@ const MyTestModalProvider = () => {
           <X />
         </Button>
         <>
-          {success ? (
+          {workers ? //Enterprise
             <>
               <div className='mb-10'>
-                <h2 className="text-2xl font-bold mb-2">Seu Teste IPTV</h2>
-                <p className="text-lg">
-                  Aqui está o seu teste de cliente com duração de 3 horas. Aproveite!
-                </p>
+                <h2 className="text-2xl font-bold mb-2">Seu Teste IPTV gerado</h2>
               </div>
               <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
@@ -62,41 +61,47 @@ const MyTestModalProvider = () => {
                 <div className='flex gap-2'>
                   <h3>Ou:</h3> <span className='cursor-copy text-blue-800' onClick={() => copyContent("http://naw4.com")} >http://naw4.com</span>
                 </div>
-                <div className="mt-10 mb-2">
-                  <p className="text-sm text-gray-600 text-center">
-                    Após realizar o teste, você pode ativar sua conta e aproveitar todos os benefícios!
+              </div>
+            </>
+            :
+            <>
+              {success ? ( //success users
+                <div className="mb-10">
+                  <h2 className="text-2xl font-bold mb-2">Teste Enviado</h2>
+                  <p className="text-lg">
+                    O seu teste IPTV foi enviado para o email fornecido.
+                  </p>
+                  <p className="text-lg">
+                    Verifique sua <b>caixa de email</b>, <b>lixeira</b> e <b>span</b> para obter as informações do teste.
                   </p>
                 </div>
-                <div className="mt-4">
-                  <Link href={"https://netmastertvonline.com/pagina-de-contato"} target="_blank">
-                    <Button className="w-full bg-green-500 hover:bg-green-600 text-white" >
+              ) : ( //users faild
+                <>
+                  <div className="mb-10">
+                    <h2 className="text-2xl font-bold mb-2">Teste Já Gerado</h2>
+                    <p className="text-lg">
+                      Um teste já foi gerado para este usuário. Aproveite!
+                    </p>
+                    <p className="text-lg">
+                      {myName}, para <b>ativar sua conta</b>, clique no botão abaixo.
+                    </p>
+                  </div>
+                  <div className="mt-4">
+                    <Link href={"https://netmastertvonline.com/pagina-de-contato"} target="_blank">
+                      <Button className="w-full bg-green-500 hover:bg-green-600 text-white" >
                         Ativar conta
-                    </Button>
-                  </Link>
-                </div>
-              </div>
+                      </Button>
+                    </Link>
+                  </div>
+                </>
+
+              )}
+
             </>
-          ) : (
-            <>
-              <div className="mb-10">
-                <h2 className="text-2xl font-bold mb-2">Teste Já Gerado</h2>
-                <p className="text-lg">
-                  Um teste já foi gerado para este usuário. Aproveite!
-                </p>
-                <p className="text-lg">
-                  {myName}, para <b>ativar sua conta</b>, clique no botão abaixo.
-                </p>
-              </div>
-              <div className="mt-4">
-                  <Link href={"https://netmastertvonline.com/pagina-de-contato"} target="_blank">
-                    <Button className="w-full bg-green-500 hover:bg-green-600 text-white" >
-                      Ativar conta
-                    </Button>
-                  </Link>
-              </div>
-            </>
-          )}
+          }
         </>
+
+
       </div>
     </div>
   )

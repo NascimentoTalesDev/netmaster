@@ -4,7 +4,7 @@ import { prisma } from "@/app/services/database/db"
 import { User } from "@prisma/client"
 import nodemailer from "nodemailer"
 
-export async function getTest() {
+export async function getTestTNM2() {
     const data = {
         "comando": "testebc1",
         "url_painel": "https://pouy.one/chatbot/check/?k=1d737ab4f8",

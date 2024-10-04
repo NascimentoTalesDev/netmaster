@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ToastProvider } from "./providers/ToastProvider";
-import MyTestModalProvider from "./providers/MyTestProvider";
+import MyTestModalProvider from "./providers/TestProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -67,7 +67,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ToastProvider />
-        <MyTestModalProvider />
         {children}
       </body>
     </html>
