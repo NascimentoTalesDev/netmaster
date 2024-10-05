@@ -62,19 +62,22 @@ const GenerateTestForm = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsGettingTest(true)
+    const urls: string[] = ["http://day13.life", "http://naw4.com"] 
     const workers = false
     let success = true
     
     try {
-      // const email = await sendEmail(values as User) 
-
+      
       const firstName = values.name.split(' ')[0];
       // const user = await checkUser(values)
-      let user = true
+
+      let user = false
       if (!user) {
         const res: MyTest = await getTestTNM2()
         myTest.onOpen(res, firstName, success, workers)
-        await saveUser(values as User);
+        
+        const email = await sendEmail(firstName, res as MyTest, urls) 
+        // await saveUser(values as User);
         toast.success("Teste gerado com sucesso");
       } else {
         success = false
