@@ -67,17 +67,17 @@ const GenerateTestForm = () => {
     let success = true
     
     try {
-      
       const firstName = values.name.split(' ')[0];
-      // const user = await checkUser(values)
+      const user = await checkUser(values)
 
-      let user = false
       if (!user) {
         const res: MyTest = await getTestTNM2()
         myTest.onOpen(res, firstName, success, workers)
         
-        const email = await sendEmail(firstName, res as MyTest, urls) 
-        // await saveUser(values as User);
+        const email = await sendEmail(values.email, firstName, res as MyTest, urls) 
+        console.log("RESP EMAIL", email);
+        
+        await saveUser(values as User);
         toast.success("Teste gerado com sucesso");
       } else {
         success = false
