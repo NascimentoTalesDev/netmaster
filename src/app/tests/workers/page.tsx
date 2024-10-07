@@ -1,5 +1,4 @@
 import React from 'react'
-import GenerateTestFormWorkerTNM1 from '@/components/GenerateTestFormWorkerTNM1';
 import GenerateTestFormWorkerTNM2 from '@/components/GenerateTestFormWorkerTNM2';
 import GenerateTestFormWorkerTNMI1 from '@/components/GenerateTestFormWorkerTNMI1';
 import GenerateTestFormWorkerTNM7 from '@/components/GenerateTestFormWorkerTNM7';
