@@ -9,7 +9,8 @@ type MyTestType = {
     success: boolean;
     workers: boolean;
     isOpen: boolean;
-    onOpen: (myTest: MyTest | null, name: string, success: boolean, workers: boolean) => void;
+    painel?: string;
+    onOpen: (myTest: MyTest | null, name: string, success: boolean, workers: boolean, painel: string,) => void;
     onClose: () => void;
 }
 
@@ -19,6 +20,7 @@ export const useMyTestProvider = create<MyTestType>((set) => ({
     success: false,
     workers: false,
     isOpen: false,
-    onOpen: (myTest: MyTest | null, name: string, success: boolean, workers: boolean) => set({ isOpen: true, myTest, name, success, workers }),
-    onClose: () => set({ isOpen: false, myTest: undefined, name: undefined, success: false, workers: false })
+    painel: undefined,
+    onOpen: (myTest: MyTest | null, name: string, success: boolean, workers: boolean, painel: string) => set({ isOpen: true, myTest, name, success, workers, painel }),
+    onClose: () => set({ isOpen: false, myTest: undefined, name: undefined, success: false, workers: false, painel: undefined })
 }))

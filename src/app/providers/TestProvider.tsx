@@ -13,6 +13,7 @@ const MyTestModalProvider = () => {
   const myName = myTestModal?.name
   const success = myTestModal?.success
   const workers = myTestModal?.workers
+  const painel = myTestModal?.painel
 
   const copyContent = (content: string | undefined) => {
     if (content) {
@@ -41,30 +42,139 @@ const MyTestModalProvider = () => {
         <>
           {workers ? //Enterprise
             <>
-              <div className='mb-10'>
-                <h2 className="text-2xl font-bold mb-2">Seu Teste IPTV gerado</h2>
-              </div>
-              <div className='flex flex-col gap-1'>
-                <div className='flex gap-2'>
-                  <h3>Nome:</h3> <span className='cursor-copy' onClick={() => copyContent(myName)}>{myName}</span>
-                </div>
-                <div className='flex gap-2'>
-                  <h3>Usuário:</h3> <span className='cursor-copy' onClick={() => copyContent(myTest?.user_teste)}>{myTest?.user_teste}</span>
-                </div>
-                <div className='flex gap-2'>
-                  <h3>Senha:</h3><span className='cursor-copy' onClick={() => copyContent(myTest?.senha_teste)}>{myTest?.senha_teste}</span>
-                </div>
-                <div className='flex gap-2'>
-                  <h3>Url:</h3> <span className='cursor-copy text-blue-800' onClick={() => copyContent("http://day13.life")} >http://day13.life</span>
-                </div>
-                <div className='flex gap-2'>
-                  <h3>Ou:</h3> <span className='cursor-copy text-blue-800' onClick={() => copyContent("http://naw4.com")} >http://naw4.com</span>
-                </div>
-              </div>
+              {painel == "TNM1" && (
+                <>
+                  <div className='mb-10'>
+                    <h2 className="text-2xl font-bold mb-2">Seu Teste IPTV gerado</h2>
+                  </div>
+                  <div className='flex flex-col gap-1'>
+                    <div className='flex gap-2'>
+                      <h3>*3 horas foi criado com sucesso!*</h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Nome:<span className='cursor-copy' onClick={() => copyContent(myName)}>{myName}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Usuário: <span className='cursor-copy' onClick={() => copyContent(myTest?.user_teste)}>{myTest?.user_teste}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Senha: <span className='cursor-copy' onClick={() => copyContent(myTest?.senha_teste)}>{myTest?.senha_teste}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Url:  <span className='cursor-copy text-blue-800' onClick={() => copyContent("http://day13.life")} >http://day13.life</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Ou:  <span className='cursor-copy text-blue-800' onClick={() => copyContent("http://naw4.com")} >http://naw4.com</span></h3>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {painel == "TNM2" && (
+                <>
+                  <div className='mb-10'>
+                    <h2 className="text-2xl font-bold mb-2">Seu Teste IPTV gerado</h2>
+                  </div>
+                  <div className='flex flex-col gap-1'>
+                    <div className='flex gap-2'>
+                      <h3>*3 horas foi criado com sucesso!*</h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>Nome: <span className='cursor-copy' onClick={() => copyContent(myName)}>{myName}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Usuário: <span className='cursor-copy' onClick={() => copyContent(myTest?.user_teste)}>{myTest?.user_teste}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Senha: <span className='cursor-copy' onClick={() => copyContent(myTest?.senha_teste)}>{myTest?.senha_teste}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Url 1: <span className='cursor-copy text-blue-800' onClick={() => copyContent("http://day13.life")} >http://day13.life</span></h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>Url 2: <span className='cursor-copy text-blue-800' onClick={() => copyContent("http://naw4.com")} >http://naw4.com</span></h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>M3U 1: <span className='cursor-copy text-blue-800' onClick={() => copyContent(`http://apow.life/get.php?username=${myTest?.user_teste}&password=${myTest?.senha_teste}&type=m3u_plus&output=ts`)} >http://apow.life/get.php?username={myTest?.user_teste}&password={myTest?.senha_teste}&type=m3u_plus&output=ts</span></h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>M3U 2: <span className='cursor-copy text-blue-800' onClick={() => copyContent(`http://ouy1.vip/get.php?username=${myTest?.user_teste}&password=${myTest?.senha_teste}&type=m3u_plus&output=ts`)} >http://ouy1.vip/get.php?username={myTest?.user_teste}&password={myTest?.senha_teste}&type=m3u_plus&output=ts</span></h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>SSIPTV: <span className='cursor-copy text-blue-800' onClick={() => copyContent(`http://pouy.one/ssiptv/get/${myTest?.user_teste}/${myTest?.senha_teste}/download_m3u/`)} >http://pouy.one/ssiptv/get/{myTest?.user_teste}/{myTest?.senha_teste}/download_m3u/</span></h3>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {painel == "TNM7" && (
+                <>
+                  <div className='mb-10'>
+                    <h2 className="text-2xl font-bold mb-2">Seu Teste IPTV gerado TNM7</h2>
+                  </div>
+                  <div className='flex flex-col gap-1'>
+                    <div className='flex gap-2'>
+                      <h3>TNM7 - Controle interno</h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>Nome: <span className='cursor-copy' onClick={() => copyContent(myName)}>{myName}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Usuário: <span className='cursor-copy' onClick={() => copyContent(myTest?.username)}>{myTest?.username}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Senha: <span className='cursor-copy' onClick={() => copyContent(myTest?.password)}>{myTest?.password}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Url 1: <span className='cursor-copy text-blue-800' onClick={() => copyContent("http://7smartvplayers.top:2052/")} >{myTest?.dns}</span></h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>M3U 1: <span className='cursor-copy text-blue-800' onClick={() => copyContent(`http://playtec.tv/get.php?username=${myTest?.username}&password=${myTest?.password}&type=m3u_plus&output=mpegts`)} >http://playtec.tv/get.php?username={myTest?.username}&password={myTest?.password}&type=m3u_plus&output=mpegts</span></h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>M3U 2: <span className='cursor-copy text-blue-800' onClick={() => copyContent(`http://playtec.tv/get.php?username=${myTest?.username}&password=${myTest?.password}&type=m3u_plus&output=m3u8`)} >http://7svrcdn3.xyz:8080/get.php?username={myTest?.user_teste}&password={myTest?.senha_teste}&type=m3u_plus&output=ts</span></h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>SSIPTV: <span className='cursor-copy text-blue-800' onClick={() => copyContent(`http://playtec.tv/ssiptv/${myTest?.username}/${myTest?.password}/download_mode`)} >http://playtec.tv/ssiptv/{myTest?.username}/{myTest?.password}/download_mode</span></h3>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {painel == "TNMI1" && (
+                <>
+                  <div className='mb-10'>
+                    <h2 className="text-2xl font-bold mb-2">Seu Teste IPTV gerado TNMI1</h2>
+                  </div>
+                  <div className='flex flex-col gap-1'>
+                    <div className='flex gap-2'>
+                      <h3>TNMI1 - Controle interno</h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>Nome: <span className='cursor-copy' onClick={() => copyContent(myName)}>{myName}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Usuário: <span className='cursor-copy' onClick={() => copyContent(myTest?.user_teste)}>{myTest?.user_teste}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Senha: <span className='cursor-copy' onClick={() => copyContent(myTest?.senha_teste)}>{myTest?.senha_teste}</span></h3>
+                    </div>
+                    <div className='flex gap-2'>
+                      <h3>Url 1: <span className='cursor-copy text-blue-800' onClick={() => copyContent("http://7smartvplayers.top:2052/")} >http://7smartvplayers.top:2052/</span></h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>M3U 1: <span className='cursor-copy text-blue-800' onClick={() => copyContent(`http://top.cdn-domain.net:80/get.php?username=${myTest?.user_teste}&password=${myTest?.senha_teste}&type=m3u_plus&output=ts`)} >http://top.cdn-domain.net:80/get.php?username={myTest?.user_teste}&password={myTest?.senha_teste}&type=m3u_plus&output=ts</span></h3>
+                    </div><br />
+                    <div className='flex gap-2'>
+                      <h3>M3U 2: <span className='cursor-copy text-blue-800' onClick={() => copyContent(`http://7svrcdn3.xyz:8080/get.php?username=${myTest?.user_teste}&password=${myTest?.senha_teste}&type=m3u_plus&output=ts`)} >http://7svrcdn3.xyz:8080/get.php?username={myTest?.user_teste}&password={myTest?.senha_teste}&type=m3u_plus&output=ts</span></h3>
+                    </div>
+                  </div>
+                </>
+              )}
             </>
             :
             <>
-              {success ? ( //success users
+              {success ? ( //success users                    
                 <div className="mb-10">
                   <h2 className="text-2xl font-bold mb-2">Teste Enviado</h2>
                   <p className="text-lg">

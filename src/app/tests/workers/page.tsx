@@ -1,5 +1,8 @@
 import React from 'react'
-import GenerateTestFormWorker from '@/components/GenerateTestFormWorker';
+import GenerateTestFormWorkerTNM1 from '@/components/GenerateTestFormWorkerTNM1';
+import GenerateTestFormWorkerTNM2 from '@/components/GenerateTestFormWorkerTNM2';
+import GenerateTestFormWorkerTNMI1 from '@/components/GenerateTestFormWorkerTNMI1';
+import GenerateTestFormWorkerTNM7 from '@/components/GenerateTestFormWorkerTNM7';
 
 const GenerateTests = () => {
   return (
@@ -9,12 +12,15 @@ const GenerateTests = () => {
           <h1 className="font-bold text-center text-4xl">Gerar Teste</h1>
           <span>Gerar teste para clientes!</span>
         </div>
-        <GenerateTestFormWorker />
+        <div className='flex gap-2 flex-wrap items-center justify-center'>
+          <GenerateTestFormWorkerTNM2 />
+          <GenerateTestFormWorkerTNM7 />
+          <GenerateTestFormWorkerTNMI1 />
+        </div>
       </div>
     </div>
 
   );
 }
-
 
 export default GenerateTests

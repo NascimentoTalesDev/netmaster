@@ -3,4 +3,8 @@ export type MyTest = {
     senha_teste: string;
     user_teste: string;
     msg: string;
+    dns: string,
+    username: string,
+    password: string,
+    expiresAtFormatted: string
 }

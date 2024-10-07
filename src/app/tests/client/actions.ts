@@ -5,10 +5,64 @@ import { MyTest } from "@/app/types/mytest"
 import { User } from "@prisma/client"
 import nodemailer from "nodemailer"
 
+export async function getTestTNM1() {
+    const data = {
+        "comando": "testebc1",
+        "url_painel": "https://pouy.one/chatbot/check/?k=1d737ab4f8",
+        "tipo_painel": "koffice"
+    }
+
+    const res = await fetch(`https://gestorv3.app.br/api_tvnetmaster.php`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'API-Key': process.env.DATA_API_KEY!,
+        },
+        body: JSON.stringify(data)
+    })
+    const resp = await res.json()
+
+    return resp
+}
+
 export async function getTestTNM2() {
     const data = {
         "comando": "testebc1",
         "url_painel": "https://pouy.one/chatbot/check/?k=1d737ab4f8",
+        "tipo_painel": "koffice"
+    }
+
+    const res = await fetch(`https://gestorv3.app.br/api_tvnetmaster.php`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'API-Key': process.env.DATA_API_KEY!,
+        },
+        body: JSON.stringify(data)
+    })
+    const resp = await res.json()
+
+    return resp
+}
+
+export async function getTestTNM7() {
+
+    const res = await fetch(`https://playtectv.qpanel.top/api/chatbot/bQELo0Dgro/BV4D3rLaqZ`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'API-Key': process.env.DATA_API_KEY!,
+        },
+    })
+    const resp = await res.json()
+
+    return resp
+}
+
+export async function getTestTNMI1() {
+    const data = {
+        "comando": "testebc1",
+        "url_painel": "https://7painel.com/chatbot/check/?k=985bdb963f",
         "tipo_painel": "koffice"
     }
 
