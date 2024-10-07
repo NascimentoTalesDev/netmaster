@@ -185,17 +185,16 @@ export async function sendEmail(email: string, fristname: string, res: MyTest, u
             subject: "Teste IPTV",
             html: message
         })
-            .then(() => {
-                console.log("Email enviado com sucesso");
-                return { message: { type: "success", data: "Email enviado com sucesso" } };
-            })
-            .catch((err) => {
-                console.error("Falha no envio do email.", err);
-                return { err, message: { type: "Error", data: "Falha no envio do email." } };
-            })
-
+        .then(() => {
+            console.log("Email enviado com sucesso");
+            return { message: { type: "success", data: "Email enviado com sucesso" } };
+        })
+        .catch((err) => {
+            console.error("Falha no envio do email.", err);
+            return { err, message: { type: "Error", data: "Falha no envio do email" } };
+        })
+        return "Email enviado com sucesso"
     } catch (error) {
-
         console.error("Aconteceu um erro inesperado", error);
         return { message: { type: "error", data: "Aconteceu um erro inesperado" } };
     }

@@ -13,7 +13,6 @@ const MyTestModalProvider = () => {
   const myName = myTestModal?.name
   const success = myTestModal?.success
   const workers = myTestModal?.workers
-  console.log(workers, success);
 
   const copyContent = (content: string | undefined) => {
     if (content) {
@@ -100,8 +99,6 @@ const MyTestModalProvider = () => {
             </>
           }
         </>
-
-
       </div>
     </div>
   )
