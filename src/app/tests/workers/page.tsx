@@ -15,6 +15,7 @@ const GenerateTests = () => {
           <GenerateTestFormWorkerTNM2 />
           <GenerateTestFormWorkerTNM7 />
           <GenerateTestFormWorkerTNMI1 />
+          <GenerateTestFormWorkerTNMI1 />
         </div>
       </div>
     </div>
