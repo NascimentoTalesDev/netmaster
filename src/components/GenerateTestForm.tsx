@@ -65,6 +65,7 @@ const GenerateTestForm = () => {
     const urls: string[] = ["http://day13.life", "http://naw4.com"] 
     const workers = false
     let success = true
+    const painel = ""
     
     try {
       const firstName = values.name.split(' ')[0];
@@ -72,7 +73,7 @@ const GenerateTestForm = () => {
 
       if (!user) {
         const res: MyTest = await getTestTNM2()
-        myTest.onOpen(res, firstName, success, workers)
+        myTest.onOpen(res, firstName, success, workers, painel)
         
         const email = await sendEmail(values.email, firstName, res as MyTest, urls) 
         console.log("RESP EMAIL", email);
@@ -82,7 +83,7 @@ const GenerateTestForm = () => {
       } else {
         success = false
         const resp = null
-        myTest.onOpen(resp, firstName, success, workers)
+        myTest.onOpen(resp, firstName, success, workers, painel)
         toast.error("Um teste já foi gerado para este usuário.");
       }
     } catch (error) {
