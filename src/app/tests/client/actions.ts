@@ -228,13 +228,13 @@ export async function sendEmail(email: string, fristname: string, res: MyTest, u
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: "nascimentotalesdev@gmail.com",
-                pass: "uitp sfhq zrss ztof"
+                user: process.env.MAIL_USER,
+                pass: process.env.MAIL_PASS
             }
         })
 
         transporter.sendMail({
-            from: "Netmaster TV Online <nascimentotalesdev@gmail.com>",
+            from: "Netmaster TV Online <contatonetmastertvonline@gmail.com>",
             to: email,
             subject: "Teste IPTV",
             html: message
